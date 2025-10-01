@@ -10,7 +10,7 @@ function App() {
     <div className="app">
       <center>
         <div className="mainHeading">
-          <h1>ToDo List</h1>
+          <h1>&#128197;To-Do List</h1>
         </div>
         <div className="subHeading">
           <br />
@@ -23,17 +23,17 @@ function App() {
           value={toDo}
           onChange={(e) => setToDo(e.target.value)}
           type="text"
-          placeholder="🖊️ Add item..."
+          placeholder="Add your item"
         />
-        <i
+        <h6
           onClick={() => {
             if (toDo.trim() !== "") {
               setToDos([...toDos, { id: Date.now(), text: toDo, status: false }]);
               setToDo(""); // ✅ clears input box
             }
           }}
-          className="fas fa-plus"
-        ></i>
+          
+        >Add</h6>
       </div>
 
       <div className="todos">
@@ -54,7 +54,7 @@ function App() {
                     );
                   }}
                 />
-                <p style={{ textDecoration: obj.status ? 'line-through' : 'none' }}>
+                <p className={obj.status ? "done" : ""}>
                   {obj.text}
                 </p>
               </div>
@@ -63,11 +63,11 @@ function App() {
                   onClick={() =>
                     setToDos(toDos.filter((obj2) => obj2.id !== obj.id))
                   }
-                  className="fas fa-times">
-
-                </i>
+                  className="fas fa-times"
+                ></i>
               </div>
             </div>
+
           );
         })}
       </div>
