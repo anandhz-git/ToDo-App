@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+  const today = new Date().toLocaleDateString('en-US', { day: 'numeric' , month: 'long' , weekday: 'long', year: 'numeric'});
   const [toDos, setToDos] = useState([]);
   const [toDo, setToDo] = useState('');
 
@@ -10,7 +10,7 @@ function App() {
     <div className="app">
       <center>
         <div className="mainHeading">
-          <h1>&#128197;To-Do List</h1>
+          <h1>To-Do List 📝</h1>
         </div>
         <div className="subHeading">
           <br />
@@ -40,6 +40,7 @@ function App() {
         {toDos.map((obj) => {
           return (
             <div className="todo" key={obj.id}>
+              <label className="custom-checkbox">
               <div className="left">
                 <input
                   type="checkbox"
@@ -53,11 +54,13 @@ function App() {
                       )
                     );
                   }}
-                />
+                /><span></span>
                 <p className={obj.status ? "done" : ""}>
                   {obj.text}
                 </p>
+                
               </div>
+              </label>
               <div className="right">
                 <i
                   onClick={() =>
